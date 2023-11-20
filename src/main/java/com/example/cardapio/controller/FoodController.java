@@ -18,14 +18,14 @@ public class FoodController {
 
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping
+    @PostMapping("cadastrar")
     public void saveFood(@RequestBody FoodRequesteDTO data){
         Food foodData = new Food(data);
         repository.save(foodData);
         return;
     }
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping
+    @GetMapping("listar")
     public List<FoodResponseDTO> getAll(){
 
         List<FoodResponseDTO> foodList = repository.findAll().stream().map(FoodResponseDTO::new).toList();
